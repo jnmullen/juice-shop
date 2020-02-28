@@ -19,6 +19,3 @@ jobs:
       run: npm i -g standard@14 && cd frontend && npm install && cd .. && npm run lint
     - name: Test
       run: npm test
-~
-~
-~
