@@ -15,16 +15,14 @@ jobs:
       with:
         node-version: '12.x'
     - name: Install Deps
+      working-directory: ${{ github.workspace }}
       run: npm install
-    - name: Lint
-      run: |
-        echo "installing standard"
-        npm i -g standard@14
-        echo "going into frontend"
-        cd frontend
-        echo "npm install frontend"
-        npm install
-        echo "back one dir"
-        cd ..
-        echo "run lint"
-        npm run lint
+    - name: Install Standard
+      working-directory: ${{ github.workspace }}
+      run: npm i -g standard@14
+    - name: Install Frontend Deps
+      working-directory: ./frontend
+      run: npm install
+    - name: Run lint
+      working-directory: ${{ github.workspace }}
+      run: npm run lint
